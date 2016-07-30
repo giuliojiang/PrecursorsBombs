@@ -1,0 +1,82 @@
+TABLES
+
+Player contains players
+
+Items contains items
+
+Friends Player-Player who is friend of who
+
+PlayerItem (Inventory) Player-Items who owns what
+
+
+// Retrieve id of player by username
+
+SELECT user_id
+FROM Player
+WHERE username = "<username>";
+
+// Creating table Friends
+
+CREATE TABLE `bomberman`.`Friends` (
+	`id` INT NOT NULL, 
+    `friend_id` INT NOT NULL,
+    FOREIGN KEY (parent_id) REFERENCES Player(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (id) REFERENCES Player(user_id) ON DELETE CASCADE
+) ENGINE = InnoDB; 
+
+// Adding a friend user 1-2
+
+INSERT INTO Friends
+VALUES (1, 2);
+
+INSERT INTO Friends
+VALUES (2, 1);
+
+// List friends of user id 1
+
+SELECT p.username
+FROM Player p JOIN Friends f ON f.friend_id = p.user_id
+WHERE f.id = 1
+;
+
+// List friends and victories of user id 1
+
+SELECT p.username, p.wins
+FROM Player p JOIN Friends f ON f.friend_id = p.user_id
+WHERE f.id = <1>;
+
+// Creating table PlayerItem
+uid
+iid
+
+CREATE TABLE `bomberman`.`PlayerItem` (
+	`uid` INT NOT NULL, 
+	`iid` INT NOT NULL,
+	FOREIGN KEY (uid) REFERENCES Player(user_id) ON DELETE CASCADE,
+	FOREIGN KEY (iid) REFERENCES Items(item_id) ON DELETE CASCADE
+) ENGINE = InnoDB;
+
+// Make player 1 own items 1 and 2
+
+INSERT INTO PlayerItem
+VALUES (1,1);
+
+INSERT INTO PlayerItem
+VALUES (1,2);
+
+// Retrieve items owned by player 1
+
+SELECT *
+FROM Items i JOIN PlayerItem p ON i.item_id = p.iid
+WHERE p.uid = 1;
+
+// Delete item y from player x
+
+DELETE FROM PlayerItem
+WHERE uid = <x> AND iid = <y>;
+
+// get friend requests of a receiver
+
+SELECT p.username
+FROM PendingFriends f JOIN Player p ON f.requester = p.user_id
+WHERE f.receiver = <receiver_id>;

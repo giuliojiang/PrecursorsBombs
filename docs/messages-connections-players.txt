@@ -1,0 +1,118 @@
+USERS AND CONNECTIONS
+
+    Client connects to the server
+
+    Client sends
+    {
+        "type": "connect",
+        "username": <username>,
+        "password": <password>
+    }
+
+    Server validates login data.
+
+    socket | Player (id)
+
+    NetworkManager:
+    id -> player (networkconn, id)
+
+    Server sends to the connected player
+    {
+        "type": "you",
+        "id": <id>
+    }
+
+    
+USER ACTIONS AND ROTATIONS
+
+    CLIENT -> SERVER
+
+        Key presses:
+        {  
+            "type":"paction",
+            "id":"null",
+            "state":"moving",
+            "rotationoffset":0
+        }
+        id playerid
+        state moving/idle
+        rotationoffset radians
+        
+    CLIENT -> SERVER
+
+        Client rotation info
+        "type" : "player"
+        
+    SERVER -> CLIENT
+        
+        Client position update
+        "type" : "player"
+        "id": <id>
+
+
+SETTING UP LOBBIES #############################################################
+
+    Client -> Server -----------------------------------------------------------
+    Client connects.
+    
+    To ask for list of lobbies he can join (he has been invited to)
+    {
+        "type": "lobbies",
+        "id": player's id
+    }
+    If user is in a lobby, this has no effect.
+    
+    To ask to join a lobby
+    {
+        "type": "join",
+        "id": player's id
+        "name": "the name of the lobby"
+    }
+    After a user joins, send to everyone in lobby "inlobby" message.
+    
+    To create a new lobby
+    {
+        "type": "newlobby",
+        "id": player's id
+    }
+    
+    To start the game
+    {
+        "type": "startgame",
+        "id": player's id
+    }
+    Only the lobby host can do this.
+    
+    To invite a player to own lobby TODO
+    {
+        "type": "invite",
+        "id": owner's id,
+        "guest": invited player's id
+    }
+    
+    To exit the lobby
+    {
+        'type':'exitlobby',
+        'id':player id
+    }
+    
+    
+    Server -> Client -----------------------------------------------------------
+    Messages sent from the server
+    
+    List of lobbies a user can join
+    When this is received, the user exits any lobby he was in.
+    {
+        "type": "lobbies",
+        "list": ["lobby1", "lobby34"]
+    }
+    
+    Inside a lobby, with users connected.
+    When this is receives, the user enters the lobby.
+    {
+        "type": "inlobby",
+        "list": ["user1", "user2", "user3", "user4"]
+    }
+    
+
+    

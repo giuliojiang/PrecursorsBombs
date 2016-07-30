@@ -1,0 +1,148 @@
+
+#login-overlay {
+    top: 0;
+    left: 0;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    background-color: rgba(128,128,128, 0.9);
+}
+
+#login-window {
+    width: 900px;
+    height: 625px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    opacity: 0.9;
+    background-image: url("pics/bomb.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: 1;
+}
+
+.login-fields {
+    width: 30%;
+    height: 40%;
+    position: relative;
+    top: 42%;
+    left: 27%;
+    outline: medium none;
+}
+
+form {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    outline: medium none;
+    box-sizing: border-box;
+    margin-left: 60px;    
+}
+
+.input-login {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    border: medium none;
+    border-radius: 15px;
+    background: rgba(173, 173, 133, 0.5);
+    color: whitesmoke;
+    font-size: 32px;
+    height: 60px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    padding: 5px;
+    padding-left: 60px;
+    width: 90%;
+    box-sizing: border-box;
+    outline: none;
+}
+
+#submit {
+    width: 35%;
+    height: 40px;
+    position: relative;
+    top: 0;
+    left: 50%;
+    color: black;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    font-size: 25px;
+    background: linear-gradient(#4d0000 5%, #b30000 100%);
+    border: medium none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 0;
+    outline: none;
+}
+
+#submit:hover{
+    background: linear-gradient(#ffff00 5%, #ffff4d 100%);
+    color: red;
+}
+
+#guest {
+    width: 42%;
+    height: 40px;
+    position: absolute;
+    top: 90%;
+    left: 72.3%;
+    color: whitesmoke;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    font-size: 25px;
+    background: linear-gradient(#4d0000 5%, #b30000 100%);
+    border: medium none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 0;
+    outline: none;
+}
+
+#guest:hover{
+    background: linear-gradient(#b30000 5%, #4d0000 100%);
+}
+
+.red {
+    color: #e60000;
+}
+
+.not-login-window {
+    color: cornsilk;
+    font-family: Comfortaa;
+    width: 900px;
+    height: 625px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: rgba(128,128,128, 0.97);
+    border: solid 1px cornsilk;
+    z-index: 1;
+}
+
+.register-input {
+    padding: 2px;
+    padding-left: 8px;
+    font-size: 20px;
+    height: 30px;
+    width: 60%;
+    border: none;
+}
+
+#tologin {
+    color: cornsilk;
+    cursor: pointer;
+}
+
+#rules tr td {
+    width: 120px;
+    height: 30px;
+}

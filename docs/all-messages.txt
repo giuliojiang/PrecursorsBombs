@@ -1,0 +1,41 @@
+SERVER->CLIENT
+
+bomb add/remove bomb
+
+exp explosion
+
+you successful login
+
+player position update
+
+lobbies lobbies list
+
+inlobby lobby users
+
+death player dead
+
+gameend game ended
+
+map map info
+
+CLIENT->SERVER
+
+placebomb add bomb
+
+connect username password
+
+paction player key press, movement
+
+player rotation
+
+lobbies list lobbies
+
+join join lobby
+
+startgame start game
+
+newlobby create lobby
+
+invite invite friend
+
+

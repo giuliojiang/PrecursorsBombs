@@ -1,0 +1,671 @@
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="theme-color" content="#3e454c">
+    
+    <title>Precursor's Bombs</title>
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Sandstone Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Bootstrap Datatables -->
+    <link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
+    <!-- Bootstrap social button library -->
+    <link rel="stylesheet" href="css/bootstrap-social.css">
+    <!-- Bootstrap select -->
+    <link rel="stylesheet" href="css/bootstrap-select.css">
+    <!-- Bootstrap file input -->
+    <link rel="stylesheet" href="css/fileinput.min.css">
+    <!-- Awesome Bootstrap checkbox -->
+    <link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
+    <!-- Admin Stye -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!--     JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    
+    <!-- Login stuff -->
+    <link rel="stylesheet" type="text/css" href="login_frame_css.css">
+    <script src="login_frame_js.js"></script>
+    <script src="login.js"></script>
+    
+    <!-- Banners stuff -->
+    <link rel="stylesheet" type="text/css" href="banners_style.css">
+    <script src="banners_action.js"></script>
+
+    <!-- General stuff -->
+    <link rel="stylesheet" type="text/css" href="general.css">
+    
+    <!-- Babylon and Hand -->
+    <script src="hand.js"></script>
+    <script src="babylon.js"></script>
+    
+    
+</head>
+
+<body>
+
+
+<!-- Game scripts and Render Canvas -->
+<canvas id="renderCanvas" class="hide-it babyloncanvas" width="100%" height="100%"></canvas>
+<div class="row small-line">
+  <div class="col-md-12 small-line"></div>
+  <button data-toggle="collapse" data-target="#bbmMenu" class="btn btn-default display-thing" id="showMenu">Show Menu</button>
+</div>
+<!-- BEGINNING SCREEN BEGINNING -->
+<div id="login-overlay" style="display:none;">
+  <!-- REGISTER STUFF BEGINNING -->
+  <div id="register-window" class="not-login-window">
+    <form  class="center" method="post" style="margin: 0; height: 60%; width: 60%; top: 40%;">
+      <h1 style="margin-bottom: 50px; text-align: center; font-size: 70px;"> Sign up </h1>
+      <p style="margin-left: 155px; margin-bottom: 15px;">
+        <label for="usernamesignup" class="uname" data-icon="u">Your username</label>
+        <input id="usernamesignup" class="form-control register-input" name="usernamesignup" required="required" type="text" placeholder="Username" />
+      </p>
+      <p style="margin-left: 155px; margin-bottom: 15px;">
+        <label for="emailsignup" class="youmail" data-icon="e" > Your email</label>
+        <input id="emailsignup" class="form-control register-input" name="emailsignup" required="required" type="email" placeholder="Email"/>
+      </p>
+      <p style="margin-left: 155px; margin-bottom: 15px;">
+        <label for="passwordsignup" class="youpasswd" data-icon="p">Your password </label>
+        <input id="passwordsignup" class="form-control register-input" name="passwordsignup" required="required" type="password" placeholder="Password"/>
+      </p>
+      <!--<p style="margin-left: 155px; margin-bottom: 15px;">
+        <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Please confirm your password </label>
+        <input id="passwordsignup_confirm" class="form-control register-input" name="passwordsignup_confirm" required="required" type="password" placeholder=""/>
+        </p>-->
+      <p style="margin-left: 222px; margin-bottom: 15px;">
+        <input type="button" value="Sign up" id="signUp" class="join" style="height: 30px; color: rgba(128,128,128, 1);"/>
+      </p>
+      <p class="change_link" style="text-align: center;">
+        Already a member?&nbsp;
+        <span id="tologin">Go and log in </span>
+      </p>
+    </form>
+  </div>
+  <!-- REGISTER STUFF END -->
+  <div id="how-to-play-window" class="not-login-window">
+    <div class="center" style="display: absolute; margin: 0; height: 60%; width: 60%; top: 40%;">
+      <h1 style="margin-bottom: 50px; text-align: center; font-size: 70px;"> How to play </h1>
+      <p style="text-align: center; font-size: 20px";>
+        Playing Precursor's Bombs is simple!
+        <br>
+        You destroy blocks by dropping bombs! <br>
+        If you are lucky, you can use power ups to help you! <br>
+        Survive and destroy the opponent to win the game! <br>
+      </p>
+      <table id="rules" style="position: absolute; margin-left: 160px; height: auto; width: auto; font-size: 20px; font-family: Comfortaa; color: cornsilk;">
+        <tr style="padding: 0px; margin: 0px;">
+          <td style="margin: 0px;">A </td>
+          <td> go LEFT  </td>
+        </tr>
+        <tr>
+          <td>  W  </td>
+          <td>   go UP   </td>
+        </tr>
+        <tr>
+          <td>   </td>
+          <td>    go LEFT  </td>
+        </tr>
+        <tr>
+          <td>S </td>
+          <td>go DOWN </td>
+        </tr>
+        <tr>
+          <td> E </td>
+          <td>drop BOMBS </td>
+        </tr>
+        <tr>
+          <td>  space </td>
+          <td>just JUMP </td>
+        </tr>
+        <tr>
+          <td>   shift</td>
+          <td> be FAST</td>
+        </tr>
+      </table>
+    </div>
+    <p id="tologin2" class="hand-cursor" style="text-align: center; font-size: 20px; margin-top: 160px;">
+      So now you are ready to go and bomb! ;]
+    </p>
+  </div>
+  <!-- LOGIN STUFF BEGINNING -->
+  <div id="login-window">
+    <div class="login-fields">
+      <form id="form_id" method="post" name="myform">
+        <input onkeypress="return searchKeyPress(event);" type="text" name="username" placeholder="Username" id="username" class="input-login"/>
+        <input onkeypress="return searchKeyPress(event);" type="password" name="password" placeholder="Password" id="loginpassword" class="input-login"/>
+        <input type="button" value="00:01" id="submit" onclick="validate()"/>
+      </form>
+      <input type="button" value="Guest" id="guest" onclick="guest_login()"/>
+    </div>
+  </div>
+  <!-- LOGIN STUFF END -->
+  <!-- BUTTONS -->
+  <input type="button" value="Register" id="register" class="extra-button" onclick="goToRegister()"/>
+  <input type="button" value="How to play" id="how-to-play" class="extra-button" style="top:100px;" onclick="goToHowToPlay()"/>
+  <input type="button" value="Login" id="login" class="extra-button" style="top:180px;" onclick="goToLogin()"/>
+</div>
+<!-- BEGINNING SCREEN END -->
+<!--     End of game -->
+<div id="end-of-game-screen" class="none-it">
+  <div id="message">
+    <div id="inside-message">
+      <h1 id="result"></h1>
+    </div>
+    <input type="button" value="Return to menu" id="back-menu" onclick="go_back_to_menu()"/>
+  </div>
+</div>
+<div class="brand clearfix">
+  <a href="index.html" class="logo"><img src="img/logo.jpg" class="img-responsive" alt=""></a>
+  <span class="menu-btn"><i class="fa fa-bars"></i></span>
+  <ul class="ts-profile-nav">
+    <li class="ts-account">
+      <a href="#" id="welcome"> Account <i class="fa fa-angle-down hidden-side"></i></a>
+      <ul>
+        <li><a onclick="dashboard_logout();">Logout</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<div class="ts-main-content">
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="page-title">Dashboard</h2>
+          <!-- QUICK START BUTTONS -->
+          <!--
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                  <div class="panel panel-default">
+                    <div class="panel-body bk-success text-light">
+                      <div class="stat-panel text-center">
+                        <div class="stat-panel-number h1 " id="chellenges">0</div>
+                        <div class="stat-panel-title text-uppercase">Current Challengers</div>
+                      </div>
+                    </div>
+                    <a href="#" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
+                  </div>
+                </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                  <div class="panel panel-default">
+                    <div class="panel-body bk-info text-light">
+                      <div class="stat-panel text-center">
+                        <div class="stat-panel-number h1 " id="friendsOnline">0</div>
+                        <div class="stat-panel-title text-uppercase">Friends are online now</div>
+                      </div>
+                    </div>
+                    <a href="#" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
+                  </div>
+                </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                  <div class="panel panel-default">
+                    <div class="panel-body bk-warning text-light">
+                      <div class="stat-panel text-center">
+                        <div class="stat-panel-number h1 " id="commentCount">0</div>
+                        <div class="stat-panel-title text-uppercase">New Comments</div>
+                      </div>
+                    </div>
+                    <a href="#" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+-->
+          <!--END OF QUICKLINKS -->
+          <div class="row">
+            <!--                             Friends -->
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <div class="panel-heading inner one">
+                <h3 contenteditable="false" id="one-title" class="center title">Friends' list</h3>
+                <div id="friends-list" class="inner-content center" style="height: 150px; position: absolute; top: 50%;">
+                </div>
+                <div class="input-group" style="top: 78%; width: 95%; margin-left: 5px;">
+                  <input type="text" placeholder="player name" class="form-control invite-input"
+                    contenteditable="false" id="befriend_user_name">
+                  <span class="input-group-btn">
+                  <button class="btn btn-default join" onclick="invite_friend()"
+                    style="margin: 0px; margin-left: 5px; height: 30px;" id="befriend-button">
+                  Befriend
+                  </button>
+                  </span>
+                </div>
+                <p id="friend-invited" style="color: cornsilk; position: absolute; bottom: -10px; margin-left: 55px;">Invitation has been sent</p>
+              </div>
+            </div> <!--/friends-->
+            
+            <div class="col-md-6 col-sm-6 col-xs-6"> <!--Pending Friends List-->
+              <div class="panel-heading inner three">
+                <h3 class="center title" contenteditable="false">Pending friends</h3>
+                <div contenteditable="false" class="inner-content center" id="pending_friends_list">
+                  <!--Here go pending friends list-->
+                </div>
+              </div>
+            </div> <!--/col-md-6-->
+
+          </div> <!--/row-->
+          <div class="row"><br /></div>
+          <div class="row">
+            <!--                         Invites -->
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <div class="panel-heading inner three">
+                <h3 class="center title" contenteditable="false">Invites</h3>
+                <div contenteditable="false" class="inner-content center" id="invitelist"></div>
+              </div>
+            </div>
+
+            <!--                             Lobbies -->
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <div class="panel-heading inner two">
+                <h3 class="center title">Lobbies</h3>
+                <div class="row lobby-one">
+                  <div class="col-md-12" contenteditable="false">
+                    <button class="btn btn-default button-thing" onclick="send_new_lobby()" id="lobby-button">new lobby</button>
+                  </div>
+                </div>
+                <div class="row lobby-two display-none" id="invite-and-play">
+                  <div class="col-md-12" contenteditable="false" style="display: inline-block;">
+                    <div class="input-group">
+                      <input type="text" placeholder="player name" class="form-control invite-input" contenteditable="false" id="invite_user_name">
+                      <span class="input-group-btn">
+                      <button class="btn btn-default inactive-button" onclick="doNothing()" style="height: 30px; margin: 0px; margin-left: 5px;" id="invite-button">Invite</button>
+                      </span>
+                    </div>
+                    <div class="col-md-12 inner-content" style="height: 65px; width: 100%; margin-top: 5px; margin-bottom: 5px;" contenteditable="false" id="lobbylist"></div>
+                    <div class="col-md-6" contenteditable="false">
+                      <button class="btn btn-default inactive-button" style="width: 100%" onclick="doNothing()" id="start-game-button">Start game</button>
+                    </div>
+                    <div class="col-md-6" contenteditable="false">
+                      <button class="btn btn-default inactive-button" style="width: 100%" onclick="send_exit_lobby()" id="exit_lobby_button">Exit lobby</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> <!--/Lobbies-->
+
+
+
+          </div> <!--/row-->
+          
+          <div class="row">
+            <br />
+          </div> <!--/row-->
+          
+          <div class="row">
+            <!--Player Statistics-->
+            
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <div class="panel panel-default">
+                <div class="panel-heading" id="Stats"></div>
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <ul class="chart-dot-list">
+                        <li class="a1">Games Lost</li>
+                        <li class="a2">Games Won</li>
+                      </ul>
+                    </div>
+
+                    <div class="col-md-8 col-sm-8 col-xs-8">
+                      <div class="chart chart-doughnut">
+                        <canvas id="chart-area3" width="1200" height="900" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">League Table</div>
+                <div class="panel-body">
+                  <!--<div class="alert alert-dismissible alert-success">
+                    <button type="button" class="close" data-dismiss="alert"><i class="fa fa-close"></i></button>
+                    <strong>Top Players</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
+                  </div>-->
+                    <!-- ADD JQUERY HERE -->
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Rank</th>
+                        <th>Username</th>
+                        <th>Number of Games Won</th>
+                      </tr>
+                    </thead>
+
+                    <tbody id="rivals">
+                      <!--
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Mark</td>
+                          <td>Otto</td>
+                          <td>@mdo</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Jacob</td>
+                          <td>Thornton</td>
+                          <td>@fat</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>Larry</td>
+                          <td>the Bird</td>
+                          <td>@twitter</td>
+                        </tr>
+                      -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+<!-- OLD Stats Display
+            <div class="col-md-12">
+              <div class="panel panel-default">
+                <div class="panel-heading">Statistics</div>
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-md-12" id="client_player_statistics">
+                      <p>Experience: 0</p>
+                      <p>Games won: 0</p>
+                      <p>Games played: 0</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> <!-/row->
+-->
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--     In game chat -->
+<div id="chat-div">
+  <div style="overflow-y: auto; height: 90%;">
+    <ul id="messages">
+    </ul>
+  </div>
+  <form id="chatBox" onsubmit="return sendChatMessage()" action="">
+    <input id="chatInput" autocomplete="off" />
+  </form>
+</div>
+
+<!--In-game hints-->
+<div class="in_game_hints" id="in_game_hints">
+  <div class="row">
+    <center><p>WASD to move, E to place a bomb, SPACE to jump, SHIFT to run, MOUSE to rotate view</p></center>
+  </div>
+</div>
+
+    <!-- Loading Scripts -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap-select.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+    <script src="js/Chart.min.js"></script>
+    <script src="js/fileinput.js"></script>
+    <script src="js/chartData.js"></script>
+    <script src="js/main.js"></script>
+
+
+
+        <script src="game_logic.js"></script>
+        
+        <script src="server_url.js"></script>
+        
+        <script src="game_events.js"></script>
+        
+        <script src="game_scene.js"></script>
+        
+        <script src="game_tools.js"></script>
+
+        <script src="game_pawn.js"></script>
+        
+        <script src="sound_system.js"></script>
+        
+        <script>
+        
+            var objects = new SceneObjects();
+
+            var system = new SystemServices();
+            
+            var game_logic = new GameLogic(system);
+            
+            var sound_system = new SoundSystem(system);
+            
+            var game_controller = new GameController(game_logic);
+            
+            function send_new_lobby()
+            {
+                var obj =
+                {
+                    "type":"newlobby",
+                    "id":game_logic.current_player().id
+                };
+                game_controller.send(JSON.stringify(obj));
+                document.getElementById('invite-and-play').classList.remove('display-none');
+            };
+            
+            function invite_user()
+            {
+                var invited = document.getElementById('invite_user_name').value;
+                var obj = 
+                {
+                    'type':'invite',
+                    'id':game_logic.current_player().id,
+                    'guest':invited
+                }
+                game_controller.send(JSON.stringify(obj));
+            };
+            
+            function start_lobby_game()
+            {
+                var obj =
+                {
+                    'type':'startgame',
+                    'id': game_logic.current_player().id
+                };
+
+                document.getElementById("showMenu").classList.remove("display-thing");
+                game_controller.send(JSON.stringify(obj));
+            };
+
+            function invite_friend() {
+                // Send friend request
+                var invited = document.getElementById('befriend_user_name').value;
+                var obj =
+                {
+                    'type':'addfriend',
+                    'id':game_logic.current_player().id,
+                    'friend':invited
+                };
+                game_controller.send(JSON.stringify(obj));
+                
+//                 var invited = document.getElementById('befriend_user_name').value;
+//                 /* For testing purposes only */
+//                 if(invited == "") {
+//                     var obj2 =
+//                     {
+//                         'type':'friendrequest',
+//                         'friend':game_logic.current_player().id // new friend's username
+//                     }
+//                     handleEvent(obj2, game_logic);
+//                     return;
+//                 }
+//                 var obj =
+//                 {
+//                     'type':'addfriend',
+//                     'id':game_logic.current_player().id, // current player's id
+//                     'friend':invited // new friend's username
+//                 }
+//                 game_controller.send(JSON.stringify(obj));
+//                 $("#friend-invited").hide().fadeIn();
+//                 setTimeout('$("#friend-invited").fadeOut()',1500);
+// 
+//                 /* For testing purposes only */
+//                 var old = document.getElementById('friends-list').innerHTML;
+//                 document.getElementById('friends-list').innerHTML = old + generateFriendEntry(invited);
+//                 enableTooltip();
+            };
+
+            function befriend() {
+                //send reply that u accept the friend's request, update friend's list
+                alert("befriend");
+            };
+
+            function rejectFriend() {
+                //send reply that u reject the friend's request
+                alert("reject");
+            };
+
+            function viewPlayerProfile(friendName) {
+                document.getElementById("stats").classList.add("none-it");
+                $('#friendProfile').show();
+            };
+
+            function playWithPlayer(friendName) {
+                send_new_lobby();
+                var obj =
+                {
+                    'type':'invite',
+                    'id':game_logic.current_player().id,
+                    'guest':friendName
+                }
+                game_controller.send(JSON.stringify(obj));
+            };
+
+            function chatWithFriend(friendName) {
+                alert("chat");
+            };
+
+            function removeFriend(friendName) {
+              // Disabled for now
+              
+                //remove friend form player's list and player from friend's list
+//                 var element = document.getElementById(friendName);
+//                 if(element != null) {
+//                     element.parentNode.removeChild(element);
+//                 }
+            };
+            
+            function dashboard_logout()
+            {
+                location.reload();
+            }
+            
+            var chatHideTime = 0;
+            
+            function sendChatMessage() {
+                var message = $("#chatInput").val();
+                if (message === '') return false;
+                console.log(message);  
+                $("#chatInput").val('');
+                $('#chatInput').blur();
+                var obj = 
+                {  
+                    'type' : 'chatMessage',
+                    'id' : game_logic.current_player().id,
+                    'message' : message
+                }
+                game_controller.send(JSON.stringify(obj));
+                                
+                return false;
+            };
+            
+            function addMessage(id, message) {
+                if (game_logic.in_game)
+                {
+                  chatHideTime = system.now() + 5000;
+                  $('#chat-div').show();
+                }
+              
+                var color = "red";
+                if (id == game_logic.current_player().id) color = "dodgerblue";
+                $("#chat-div ul").append(
+                '<li><span style="font-weight:bold;color:' + color + '">' 
+                + id +  '</span>: ' + message + '</li>');
+                var height = 0;
+                $('#chat-div div ul li').each(function(i, value){
+                    height += parseInt($(this).height());
+                });
+
+                height += '';
+
+                $('#chat-div div').animate({scrollTop: height});
+            }
+
+  var canvas = document.getElementById("renderCanvas");
+  var engine = new BABYLON.Engine(canvas, true);
+  var scene = new BABYLON.Scene(engine);
+  var PAWN;
+  var BOMB;
+
+    BABYLON.SceneLoader.ImportMesh("", "./assets/",  "bomberman.babylon", scene, function (newMeshes) 
+        {
+            // Wait for textures and shaders to be ready
+            var pawn = newMeshes[0];
+            var bomb = newMeshes[1];
+            bomb.scaling = new BABYLON.Vector3(2, 2, 2);
+
+            console.log("NUM MESHES: "+ newMeshes.length);
+
+            pawn.isVisible = false;
+            bomb.isVisible = false;
+
+            PAWN = pawn;
+            BOMB = bomb;
+
+            PAWN.cloneCount = 0;
+            
+
+                // call createScene
+                createScene(objects);
+
+                // window events
+                window.addEventListener("keydown", game_controller.keyPressedListener);
+                window.addEventListener("keyup", game_controller.keyReleasedListener);
+
+                // Render loop to repeatedly render the scene
+                engine.runRenderLoop(function() {
+                    objects.scene.render();
+                    update_scene(objects, game_logic, game_controller);
+                    if (system.now() > chatHideTime)
+                    {
+                      $('#chat-div').hide();
+                      game_controller.chatOpened = false;
+                    }
+                });
+        }
+    );
+
+            // watch for browser/canvas resize events
+            window.addEventListener("resize", function() {
+                engine.resize();
+            });
+                    
+        </script>
+
+
+
+
+</body></html>

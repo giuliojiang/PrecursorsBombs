@@ -1,0 +1,37 @@
+SERVER -> CLIENT
+    
+    To display/remove the bomb
+    server->client
+    {
+        "type":"bomb",
+        "no": 555, // each bomb is numbered
+        "action":"add", // can be add or remove
+        "x":12, // these numbers are doubles, not ints
+        "y":20
+    }
+    When removing a bomb, x and y coordinates are ignored.
+
+
+
+    To display/remove explosion effect
+    server->client
+    {
+        "type":"exp", // stands for Explosion
+        "x", 12,
+        "y", 20,
+        "shape", "+"
+    }
+    shapes:
+    "-" a horizontal explosion
+    "|" a vertical explosion
+    "+" a cross explosion
+    If a cell (x, y) is already showing explosion "-" and receives a "|", it becomes a "+".
+    Explosion duration is kept by the client, as it doesn't affect the logic of the game.
+
+
+CLIENT -> SERVER
+
+    {
+        "type":"placebomb",
+        "id":player's id
+    }   

@@ -1,0 +1,139 @@
+CLIENT -> SERVER
+
+    To get a list of friends of the player
+    {
+        'type':'listfriends',
+        'id':pid                // current player's id
+    }
+
+    To get the list of items the player owns
+    {
+        'type':'owneditems',
+        'id':pid                // current player's id
+    }
+
+    To register a new user
+    {
+        'type':'registeruser',
+        'username':username,
+        'password':password,
+        'email':email'
+    }
+
+    To add an item to a user
+    {
+        'type':'adduseritem',
+        'uid':user id,
+        'item':item name
+    }
+
+    To remove an item from a user
+    {
+        'type':'removeuseritem',
+        'uid': user id,
+        'item': item name
+    }
+
+    Get a list of online friends
+    {
+        'type':'onlinefriends',
+        'id': player's id
+    }
+
+    Get player statistics. Can also request stats of another player (friend)
+    {
+        'type':'playerstats',
+        'id': player's id
+    }
+    
+    Get top three friends list.
+    {
+        'type':'topfriends',
+        'id': current player's id
+    }
+    
+    Send a friend request
+    {
+        'type':'addfriend',
+        'id':pid,               // current player's id
+        'friend':friendid       // new friend's username
+    }
+    
+    Accept a friend request
+    {
+        'type':'acceptfriend',
+        'id':pid,               // current player's id
+        'friend':friendid       // new friend's id
+    }
+    
+    Reject a friend request
+    {
+        'type':'rejectfriend',
+        'id':pid,
+        'friend':friendid
+    }
+
+SERVER -> CLIENT
+
+    Response to listfriends
+    {
+        'type':'listfriends',
+        'friends': [friend1, friend2...]
+    }
+    
+    Response to listfriends, but for pending friends
+    {
+        'type':'pendingfriends',
+        'friends': [friend1, friend2...]
+    }
+
+    Response to owneditems
+    {
+        'type':'owneditems',
+        'items':[item1, item2,,,]
+    }
+
+    Response to onlinefriends
+    {
+        'type':'onlinefriends',
+        'friends':[friend1, friend2...]
+    }
+
+    Response to playerstats
+    {
+        'type':'playerstats',
+        'player':target player's username/id
+        'experience':experience (it's an integer)
+        'lastgameplayed':last game played time (it should be a mysql formatted date+time
+        'wins':number of victories
+        'totalgames':number of total games played
+    }
+    Maybe more things will be added
+    
+    Login failed
+    {
+        'type':'loginfailed'
+    }
+    
+    Registration failed
+    {
+        "type":"registrationfailed",
+        "reason":reason // reason is a string with the reason why registration failed
+    }
+    
+    Registration successful
+    {
+        "type":"registrationsuccess"
+    }
+    
+    Response to topfriends
+    {
+        'type':'topfriends',
+        'rivals':[{
+        'username': username of friend on top list, // (top 3) in order
+        'wins':wins of friend on top list, // (top 3) in order
+        },
+        {//repeat 2 more times
+        }]
+
+    }

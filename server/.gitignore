@@ -1,0 +1,11 @@
+bin/*
+.classpath
+.idea/*
+out/*
+idea
+bin
+out
+.project
+server.eml
+server.iml
+.*.swp

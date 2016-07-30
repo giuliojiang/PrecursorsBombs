@@ -1,0 +1,17 @@
+SERVER -> CLIENT
+
+    When a player dies:
+    {
+        'type':'death',
+        'id':dead player's id
+    }
+    If the id is current_player's id the game shows a message that you died.
+    Otherwise, just remove the player from the game.
+    
+    When the game finishes:
+    {
+        'type':'gameend',
+        'winner':winning player's id
+    }
+    If there was just 1 player, winner is 'THE BOMBS'.
+    
